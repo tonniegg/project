@@ -1,0 +1,24 @@
+{%load crispy_forms_tags%}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<div class="container">
+    <div class="row">
+            <!--Left Album Info-->
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4 class="text-primary">Add Song</h4>
+                    <hr>
+                    <form method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        {{form|crispy}}
+                     <div class="form">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>

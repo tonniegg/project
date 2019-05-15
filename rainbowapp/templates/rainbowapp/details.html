@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+<div class="container">
+    <div class="row">
+            <!--Left Album Info-->
+            <div class="col-sm-3">
+                <div class="panel panel-info">
+                    <img src="{{album.cover.url}}" class="img img-thumbnail img-responsive" alt="">
+                    <div class="caption">
+                    <h5>{{album.name}}</h5>
+                    <h6>{{album.genre}}</h6>
+                    </div>
+                </div>
+            </div>
+        <!--End Album Info-->
+            <div class="col-sm-9">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="">Songs</a></li>
+                    <li ><a href="{%url 'rainbowapp:add_song' album.id%}">Add a song</a></li>
+                </ul>
+                <div class="panel panel-default" style="margin:1px">
+                    <div class="panel-body">
+                        <h4 class="text-primary">All Songs</h4>
+                        <table class="table">
+                            <tr>
+                                <thead>
+                                <th>#</th>
+                                <th>Audio</th>
+                                <th>Song name</th>
+                                <th>Favourite</th>
+                                <th>Action</th>
+                                </thead>
+                            </tr>
+                            <tbody>
+                                {%if album.song_set%}
+                                    {%for s in album.song_set.all%}
+                                        <tr>
+                                            <td>{{album.id}}</td>
+                                            <td>{{s.name}}</td>
+                                            <td><a href="{{s.audio.url}}" class="btn btn-info btn-sm" target="_blank">
+                                                <i class="fas fa-play"></i>
+                                            </a>
+                                            <td>
+                                               <a href="" class="btn btn-primary btn-sm"> <i class="fas fa-heart"></i></a>
+                                            </td>
+                                            </td>
+                                            <td><a href="" class="btn btn-success btn-sm"> <i class="fas fa-edit"></i></a>
+                                            <a href="{%url 'rainbowapp:delete_album' album.id%}" onclick='return confirm("Are you sure you want to delete this")' class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>
+
+
+                                        </tr>
+                                    {%endfor%}
+                                {%endif%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</div>
